@@ -57,9 +57,10 @@ app.post('/submit', async(req, res) =>{
     res.render('confirmation', { post } );
 });
 
-app.post('/entries', async(req, res) =>{
+app.get('/entries', async(req, res) =>{
+    const conn = await connect();
     const entries = await conn.query(`SELECT * FROM posts
-        ORDER BY created_at DESC`);
+        ORDER BY id DESC`);
 
     res.render('entries', entries);
 });
