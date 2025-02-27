@@ -48,13 +48,13 @@ app.post('/submit', async(req, res) =>{
         title : req.body.title,
         content : req.body.content,
         }
-console.log(post);
+    console.log(post);
 
-const insertQuery = await conn.query(`insert into posts
+    const insertQuery = await conn.query(`insert into posts
     (author,title,content)
     values(?,?,?)`,
     [post.author,post.title,post.content])
-res.render('confirmation', { post } );
+    res.render('confirmation', { post } );
 });
 
 app.listen(PORT, () => {
