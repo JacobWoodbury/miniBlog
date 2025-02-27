@@ -41,12 +41,14 @@ app.get('/', (req, res) =>{
 
 
 app.get('/submit', (req, res) =>{
-    const newPost = {
+    const post = {
         author : req.body.author,
         title : req.body.title,
         content : req.body.content,
     }
-console.log(newPost);
+console.log(post);
+
+res.render('confirmation', post);
 });
 
 app.listen(PORT, () => {
