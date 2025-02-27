@@ -40,14 +40,20 @@ app.get('/', (req, res) =>{
 });
 
 
-app.post('/submit', (req, res) =>{
+app.post('/submit', async(req, res) =>{
+    const conn  = await connect();
+
     const post = {
         author : req.body.author,
         title : req.body.title,
         content : req.body.content,
-    }
+        }
 console.log(post);
 
+const insertQuery = await conn.query(`insert into posts
+    (author,title,content)
+    values(?,?,?)`,
+    [post.author,post.title,post.content])
 res.render('confirmation', { post } );
 });
 
