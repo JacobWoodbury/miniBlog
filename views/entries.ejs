@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entries</title>
 
-    <% if (entries.id == null || entries.id <= 0 || ) { %>
+    <% if (entries.id == null || entries.id <= 0) { %>
         <p>No Posts Found</p>
         <% } else { %>
     <ul>
         <% for (let i = 0; i < entries.length; i++) { %>
-        <li><%= post[i] %></li>
+        <li><%= entries[i] %></li>
         <% } %>
     </ul>
     <%}%>
