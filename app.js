@@ -62,7 +62,7 @@ app.get('/entries', async(req, res) =>{
     const entries = await conn.query(`SELECT * FROM posts
         ORDER BY id DESC`);
 
-    res.render('entries', entries);
+    res.render('entries', {entries});
 });
 
 app.listen(PORT, () => {
