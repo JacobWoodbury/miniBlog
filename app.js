@@ -40,7 +40,7 @@ app.get('/', (req, res) =>{
 });
 
 
-app.get('/submit', (req, res) =>{
+app.post('/submit', (req, res) =>{
     const post = {
         author : req.body.author,
         title : req.body.title,
@@ -48,7 +48,7 @@ app.get('/submit', (req, res) =>{
     }
 console.log(post);
 
-res.render('confirmation', post);
+res.render('confirmation', { post } );
 });
 
 app.listen(PORT, () => {
