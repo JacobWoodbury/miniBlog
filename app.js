@@ -57,6 +57,13 @@ app.post('/submit', async(req, res) =>{
     res.render('confirmation', { post } );
 });
 
+app.post('/entries', async(req, res) =>{
+    const entries = await conn.query(`SELECT * FROM posts
+        ORDER BY created_at DESC`);
+
+    res.render('entries', entries);
+});
+
 app.listen(PORT, () => {
     console.log(`Server running http://localhost:${PORT}`);
 });
