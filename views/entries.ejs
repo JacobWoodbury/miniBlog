@@ -6,16 +6,18 @@
     <link rel="stylesheet" href="style.css">
     <title>Entries</title>
 
-    <% console.log(entries.content); %>
+    <% console.log(entries.length); %>
 
-    <% if (entries.content) { %>
+    <% if (entries.length === 0) { %>
         <p>No Posts Found</p>
         <% } else { %>
-    <ul>
+    
         <% for (let i = 0; i < entries.length; i++) { %>
-            <p><%= entries[i].author %> <%= entries[i].title %> <%= entries[i].id %></p>
+            <p><%= entries[i].author %> at <%= entries[i].created_at %></p> 
+            <h3><%= entries[i].title %></h3>
+            <p><%= entries[i].content %></p>
             <% } %>
-    </ul>
+    
     <%}%>
 
 </head>

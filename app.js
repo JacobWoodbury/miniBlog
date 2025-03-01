@@ -34,9 +34,16 @@ app.use (express.static('public'));
 
 const PORT = 3000;
 
-app.get('/', (req, res) =>{
-
+app.get('/', async(req, res) =>{
+    const conn = await connect();
     res.render('home');
+    const mkTable = await conn.query(`CREATE TABLE IF NOT EXISTS posts(
+        id INTEGER AUTO_INCREMENT,
+        author VarChar(255),
+        title VarChar(255),
+        content TEXT,
+        created_at TIMESTAMP,
+        PRIMARY KEY (id));`)
 });
 
 
@@ -48,19 +55,23 @@ app.post('/submit', async(req, res) =>{
         title : req.body.title,
         content : req.body.content,
         }
+        const tStamp = Date();
     console.log(post);
 
-    const insertQuery = await conn.query(`insert into posts
-    (author,title,content)
-    values(?,?,?)`,
+    const insertQuery = await conn.query(`
+    insert into posts
+    (author,title,content,created_at)
+    values(?,?,?, CURRENT_TIMESTAMP)`,
     [post.author,post.title,post.content])
+        
+
     res.render('confirmation', { post } );
 });
 
 app.get('/entries', async(req, res) =>{
     const conn = await connect();
     const entries = await conn.query(`SELECT * FROM posts
-        ORDER BY id DESC`);
+        ORDER BY created_at DESC`);
 
     res.render('entries', {entries});
 });
