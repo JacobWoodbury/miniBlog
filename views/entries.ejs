@@ -6,20 +6,20 @@
     <link rel="stylesheet" href="style.css">
     <title>Entries</title>
 
-    <% console.log(entries.length); %>
-
     <% if (entries.length === 0) { %>
         <p>No Posts Found</p>
         <% } else { %>
-    
+        <div class="flex-container">
         <% for (let i = 0; i < entries.length; i++) { %>
-            <p><%= entries[i].author %> at <%= entries[i].created_at %></p> 
-            <h3><%= entries[i].title %></h3>
-            <p><%= entries[i].content %></p>
+            <div class="post"> 
+                <h3><%= entries[i].title %></h3>
+                <p class = "content"><%= entries[i].content %></p>
+                <p class = "t-stamp">By <%= entries[i].author %> at <%= entries[i].created_at %></p>
+            </div>
             <% } %>
-    
+        </div>
     <%}%>
-
+        
 </head>
 <body>
     

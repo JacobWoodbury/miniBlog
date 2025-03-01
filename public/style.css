@@ -1,10 +1,32 @@
 body{
     text-align: center;
-    margin-left: 7%;
-    margin-right: 7%;
+    margin-left: 15%;
+    margin-right: 15%;
     background-color: black;
     color: white;
 }
 p{
+    background-color: rgba(25, 15, 54, 0.692);
+    padding: 50px 50px;
+    margin: 10px;
+    border-radius: 5%;
+}
+.flex-container{
+    display: flex;
+    flex-direction: column;
+}
+.post{
+    background-color: rgb(21, 1, 44);
+    margin: 2%;
+}
+.content{
+    text-align: left;
+}
+.t-stamp{
+    margin: 2px;
+    padding: 2px;
+}
+section{
+    padding: 10px;
     
 }
