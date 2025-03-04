@@ -1,4 +1,4 @@
-alert("Connected");
+
 
 document.getElementById('post-form').onsubmit = () => {
     clearErrors();
@@ -16,10 +16,11 @@ document.getElementById('post-form').onsubmit = () => {
         isValid = false;
     }
 
-    if(content.length() < 10){
+    if(content.length < 10){
         document.getElementById('err-content').style.display = "block";
         isValid = false;
     }
+
     return isValid;
 }
 
