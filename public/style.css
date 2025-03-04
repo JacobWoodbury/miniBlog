@@ -32,7 +32,7 @@ section{
 }
 
 .error{
-    color:darkred;
+    color:red;
     display:none;
 
 }
