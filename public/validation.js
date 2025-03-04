@@ -2,9 +2,10 @@ alert("Connected");
 
 document.getElementById('post-form').onsubmit = () => {
     clearErrors();
-    let author = document.getElementById('author').value.trim();
     let isValid = true;
+    let author = document.getElementById('author').value.trim();
     let title = document.getElementById('title').value.trim();
+    let content = document.getElementById('content').value.trim();
 
     if(author === "" || author.isInteger === true) {
         document.getElementById('err-author').style.display = "block";
@@ -15,7 +16,10 @@ document.getElementById('post-form').onsubmit = () => {
         isValid = false;
     }
 
-
+    if(content.length() < 10){
+        document.getElementById('err-content').style.display = "block";
+        isValid = false;
+    }
     return isValid;
 }
 
