@@ -1,7 +1,7 @@
 import express from 'express'; 
 import mariadb from 'mariadb';
 import dotenv from 'dotenv';
-import { validateForm } from './services/serverVal';
+import { validateForm } from './services/serverVal.js';
 
 dotenv.config();
 
@@ -64,6 +64,13 @@ app.post('/submit', async(req, res) =>{
     (author,title,content,created_at)
     values(?,?,?, CURRENT_TIMESTAMP)`,
     [post.author,post.title,post.content])
+
+    const result = validateForm(post);
+    if(!result.isValid)
+    {
+        res.send(result.errors);
+        return
+    }
         
 
     res.render('confirmation', { post } );

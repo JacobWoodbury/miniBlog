@@ -7,7 +7,7 @@ document.getElementById('post-form').onsubmit = () => {
     let title = document.getElementById('title').value.trim();
     let content = document.getElementById('content').value.trim();
 
-    if(author === "" || author.isInteger === true) {
+    if(author === "" || /\d/.test(author)) {
         document.getElementById('err-author').style.display = "block";
         isValid = false;
     }

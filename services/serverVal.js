@@ -1,6 +1,6 @@
 export function validateForm(data) {
     const errors = [];
-    if(data.author === "" || author.isInteger === true) {
+    if(data.author === "" || /\d/.test(data.author)) {
         error.push("Invalid author input");
     }
     if(data.title === "") {
