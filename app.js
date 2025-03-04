@@ -1,6 +1,7 @@
 import express from 'express'; 
 import mariadb from 'mariadb';
 import dotenv from 'dotenv';
+import { validateForm } from './services/serverVal';
 
 dotenv.config();
 
